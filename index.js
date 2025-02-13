@@ -39,6 +39,21 @@ app.post("/books" , ( req , res )=>{
   res.status(200).json({book:newBook}) ;
 })
 
+app.put("/books/:id", (req, res) => {
+  const bookIndex = data.findIndex((b) => b.book_id === req.params.id);
+
+  if (bookIndex === -1) {
+    return res.status(404).json({ error: "Book not found." });
+  }
+
+  const updatedBook = { ...data[bookIndex], ...req.body };
+  data[bookIndex] = updatedBook;
+
+  res.status(200).json(updatedBook);
+});
+
+
+
 app.delete("/books/:id" , (req , res)=>{
   const id = parseInt(req.params.id) ;
   const BookIndex = data.findIndex((b)=>{
