@@ -48,7 +48,7 @@ app.delete("/books/:id" , (req , res)=>{
     res.status(404).json("Book not Found !") ;
   }
   data.splice(BookIndex , 1) ;
-  res.status(201).json("Book deleted succesfully !") ;
+  res.status(201).json("Book deleted succesfully !") ; 
   // const newArr = data.filter((ele)=>{
   //   return ele.book_id != id ; 
   // })
